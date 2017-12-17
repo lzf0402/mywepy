@@ -1,0 +1,90 @@
+<style lang="less">
+  .m-box{
+
+  }
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+</style>
+<template>
+  <view class="m-box">
+    <!-- <view class="m-cat" wx:for="positionList">
+      <text>{{item.type}}</text>
+    </view> -->
+    <!-- <text>234324</text> -->
+    <repeat for="{{positionList}}" index="index" item="item" key="id">
+      <group :grouplist="item" :index="index"></group>
+    </repeat>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Group from '../components/group'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'IT内推-职位列表'
+    }
+
+    data = {
+      positionList: [{
+        id: 2354,
+        type: 'JAVA',
+        city: 'Hangzhou',
+        positions: [{
+          id: 10054,
+          name: '资深java开发'
+        }]
+      },{
+        id: 2354,
+        type: 'JAVA',
+        city: 'Hangzhou',
+        positions: [{
+          id: 10054,
+          name: '资深java开发'
+        }]
+      },{
+        id: 2354,
+        type: 'JAVA',
+        city: 'Hangzhou',
+        positions: [{
+          id: 10054,
+          name: '资深java开发'
+        }]
+      }]
+    }
+
+    components = {
+      group: Group
+    }
+
+    computed = {
+      now () {
+        return +new Date()
+      }
+    }
+
+    methods = {
+      plus () {
+        this.mynum++
+      }
+    }
+
+    onLoad() {
+      console.log('tt')
+    }
+  }
+</script>

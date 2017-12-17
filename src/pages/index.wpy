@@ -1,0 +1,77 @@
+<style lang="less">
+  .m-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .u-mntlt{
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .u-company{
+    margin: 20px auto 0;
+    padding:20px;
+    min-height: 100px;
+    text-align: center;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f2f2f2;
+    cursor: pointer;
+    .logo{
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      margin: auto;
+    }
+    .name{
+      display: block;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 5px;
+    }
+  }
+</style>
+<template>
+  <view class="m-container">
+    <text class="u-mntlt">知名IT公司内推</text>
+    <view class="u-company" wx-for="{{ companyList }}" wx:key="item.id">
+      <navigator url="/pages/position?id={{item.id}}">
+        <image class="logo" mode="center" src="https://haitao.nos.netease.com/0be2d7ff-27a0-4058-971f-85af4237f7f4.jpg?imageView&thumbnail=150x0&quality=85"></image>
+        <text class="name">{{item.name}} Netease - 网易</text>
+      </navigator>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'IT内推'
+    }
+
+    data = {
+      companyList: [{
+        name: 'Netase',
+        id: '10010',
+        imageUrl: 'https://haitao.nos.netease.com/0be2d7ff-27a0-4058-971f-85af4237f7f4.jpg'
+      }]
+    }
+
+    methods = {
+      goDetail (id) {
+        console.log(id)
+        // wx.navigateTo({
+        //     url: '/pages/personal'
+        //   })
+      }
+    }
+
+    onLoad() {
+      console.log('loaded')
+    }
+  }
+</script>
